@@ -10,9 +10,9 @@ var router = express.Router();
 
 /* GET Login Result. */
 router.get('/', function(req, res, next) {
-  var username = req.query.username;
+  var email = req.query.email;
   var password = req.query.password;
-  connection.query("SELECT * from users where username=? and password=?", [username, password], function(error, results, fields) {
+  connection.query("SELECT * from users where email=? and password=?", [email, password], function(error, results, fields) {
     var result;
     if (error || results.length == 0) {
       result = {loginSuccess: false};
