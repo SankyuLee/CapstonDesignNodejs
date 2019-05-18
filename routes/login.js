@@ -17,8 +17,8 @@ router.get('/', function(req, res, next) {
     if (error || results.length == 0) {
       result = {loginSuccess: false};
     } else {
-      result = {loginSuccess: true, user: result[0]};
-      req.session.user = result[0];
+      result = {loginSuccess: true, user: results[0]};
+      req.session.user = results[0];
     }
     console.log(result);
     res.json(result);
