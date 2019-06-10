@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var sqlRouter = require('./routes/sql');
 var loginRouter = require('./routes/login');
 var result = require('./routes/result');
+var excel = require('./routes/excel');
 
 var expressSession = require('express-session');
 
@@ -35,6 +36,7 @@ app.use('/users', usersRouter);
 app.use('/sql', sqlRouter);
 app.use('/login', loginRouter);
 app.use('/result', result);
+app.use('/excel', excel);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
