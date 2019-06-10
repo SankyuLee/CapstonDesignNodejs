@@ -64,15 +64,15 @@ router.get('/', function(req, res, next) {
           if (byUser[e]['items'][i].o_quantity == 0)
             arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, "1/"+commons[byUser[e]['items'][i]['itemId']]['count'], Math.floor(commons[byUser[e]['items'][i]['itemId']]['price']/commons[byUser[e]['items'][i]['itemId']]['count'])]);
           else
-            arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, "=B"+row_cnt+"*C"+row_cnt]);
+            arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, {t: 'n', f: "=B"+row_cnt+"*C"+row_cnt}]);
           row_cnt++;
         }
-        arr.push(["Total", "", "", {t: 'n', f: "=SUM(D"+start_row+":D"+(row_cnt-1)+")"}]);
+        arr.push(["총액", "", "", {t: 'n', f: "=SUM(D"+start_row+":D"+(row_cnt-1)+")"}]);
         row_cnt++;
         arr.push([""]);
         row_cnt++;
       }
-      arr.push(["Remainder","","",diff]);
+      arr.push(["짤짤이","","",diff]);
       var ws = XLSX.utils.aoa_to_sheet(arr);
     	var wb = XLSX.utils.book_new();
     	XLSX.utils.book_append_sheet(wb, ws, filenamify(eventname));
