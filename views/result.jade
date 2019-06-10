@@ -27,7 +27,7 @@ head
     }
 body
   - function numberToWon(x) {
-  -   return '&#8361;' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  -   return String.fromCharCode(0x20A9) + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   - }
   h1= eventname
   hr.outer
