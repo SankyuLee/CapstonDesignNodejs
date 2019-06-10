@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
     var byUser = [];
     var commons = {};
     var diff = 0;
+    console.log(results);
     result.forEach(function(e, i) {
       if (!this[e.userId]) {
         this[e.userId] = {
