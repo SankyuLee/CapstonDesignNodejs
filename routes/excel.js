@@ -62,9 +62,9 @@ router.get('/', function(req, res, next) {
         var start_row = row_cnt;
         for (i in byUser[e]['items']) {
           if (byUser[e]['items'][i].o_quantity == 0)
-            arr.push(byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, "1/"+commons[byUser[e]['items'][i]['itemId']]['count'], Math.floor(commons[byUser[e]['items'][i]['itemId']]['price']/commons[byUser[e]['items'][i]['itemId']]['count'])]);
+            arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, "1/"+commons[byUser[e]['items'][i]['itemId']]['count'], Math.floor(commons[byUser[e]['items'][i]['itemId']]['price']/commons[byUser[e]['items'][i]['itemId']]['count'])]);
           else
-            arr.push(byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, "=B"+row_cnt+"*C"+row_cnt]);
+            arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, "=B"+row_cnt+"*C"+row_cnt]);
           row_cnt++;
         }
         arr.push(["Total", "", "", "=SUM(D"+start_row+":D"+(row_cnt-1)+")"]);
