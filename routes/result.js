@@ -31,16 +31,17 @@ router.get('/', function(req, res, next) {
         this[e.userId]['items'].push({itemId: e.id, itemname: e.itemname, price: e.price, o_quantity: e.o_quantity, quantity: e.quantity});
       }
       if (e.o_quantity == 0) {
-        var id = parseInt(e.id);
-        if (!commons[id])
-          commons[id] = {count: 1, price: e.price};
+        if (!commons[e.id])
+          commons[e.id] = {count: 1, price: e.price};
         else {
-          commons[id]['count']++;
+          commons[e.id]['count']++;
         }
       }
     });
-
-    res.json(commons);
+    for (x in commons) {
+      diff += commons[x]['price'] % commons[x]['count'];
+    }
+    res.send(diff);
   });
 });
 
