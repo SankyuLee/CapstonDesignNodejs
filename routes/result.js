@@ -13,6 +13,8 @@ router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
   //var user_len = results.length;
   connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
+    if (error)
+      console.log(error);
     var result = results;
     var byUser = [];
     var commons = {};
