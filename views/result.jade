@@ -50,7 +50,7 @@ body
         .col-4.item
           h4= val2.itemname
         .col-3.price
-          h4= numberToWon(val2.price)
+          //h4= numberToWon(val2.price)
         .col-2.quantity
           if val2.o_quantity == 0
             h4= "1/"+commons[val2.itemId]['count']
@@ -58,23 +58,23 @@ body
             h4= val2.quantity
         .col-3.total
           if val2.o_quantity == 0
-            h4= numberToWon(Math.floor(commons[val2.itemId]['price'] / commons[val2.itemId]['count']))
+            //h4= numberToWon(Math.floor(commons[val2.itemId]['price'] / commons[val2.itemId]['count']))
             - sum += Math.floor(commons[val2.itemId]['price'] / commons[val2.itemId]['count']);
           else
-            h4= numberToWon(val2.price*val2.quantity)
+            //h4= numberToWon(val2.price*val2.quantity)
             - sum += val2.price*val2.quantity;
     hr.inner
     .row
       .col-4.item
         h4 총액
       .col-8.total
-        h4= numberToWon(sum)
+        //h4= numberToWon(sum)
     hr.outer
   .row
     .col-4.item
       h4 짤짤이
     .col-8.total
-      h4= numberToWon(diff)
+      //h4= numberToWon(diff)
   hr.outer
 
   // Optional JavaScript
