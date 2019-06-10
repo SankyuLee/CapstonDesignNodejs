@@ -22,6 +22,9 @@ head
     .total {
       text-align: right;
     }
+    .quantity {
+      padding: 0;
+    }
 body
   hr.outer
   each val1 in byUser
@@ -43,9 +46,15 @@ body
         .col-3.price
           h4= val2.price
         .col-2.quantity
-          h4= val2.quantity
+          if val2.o_quantity == 0
+            h4 공통
+          else
+            h4= val2.quantity
         .col-3.total
-          h4= val2.price*val2.quantity
+          if val2.o_quantity == 0
+            h4= commons[val2.id]['price'] / commons[val2.id]['count']
+          else
+            h4= val2.price*val2.quantity
     hr.outer
 
   // Optional JavaScript

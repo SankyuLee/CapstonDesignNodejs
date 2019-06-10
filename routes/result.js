@@ -8,10 +8,9 @@ var connection = mysql.createConnection({
 var express = require('express');
 var router = express.Router();
 
-/* caculate total amount of users. */
+/* GET result of users by eventId. */
 router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
-  //var user_len = results.length;
   connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
     if (error)
       console.log(error);
@@ -21,7 +20,6 @@ router.get('/', function(req, res, next) {
     var diff = 0;
 
     result.forEach(function(e, i) {
-      console.log("1");
       if (!this[e.userId]) {
         this[e.userId] = {
           userId: e.userId,
@@ -41,7 +39,6 @@ router.get('/', function(req, res, next) {
           commons[e.id]['count']++;
         }
       }
-      console.log(byUser);
     }, {});
 
     for (x in commons) {
