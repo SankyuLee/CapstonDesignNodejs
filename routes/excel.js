@@ -5,6 +5,7 @@ var connection = mysql.createConnection({
   password: 'justpay',
   database: 'justpay'
 });
+var filenamify = require('filenamify');
 var XLSX = require('xlsx');
 var express = require('express');
 var router = express.Router();
@@ -74,8 +75,8 @@ router.get('/', function(req, res, next) {
       arr.push(["Remainder","","",diff]);
       var ws = XLSX.utils.aoa_to_sheet(arr);
     	var wb = XLSX.utils.book_new();
-    	XLSX.utils.book_append_sheet(wb, ws, eventname);
-    	XLSX.writeFile(wb, 'event'+eventId+'.xlsx');
+    	XLSX.utils.book_append_sheet(wb, ws, filenamify(eventname));
+    	XLSX.writeFile(wb, filenamify(eventname)+'.xlsx');
       res.send('respond with a resource');
     });
   });
