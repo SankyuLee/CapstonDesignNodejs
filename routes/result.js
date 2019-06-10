@@ -42,7 +42,7 @@ router.get('/', function(req, res, next) {
         }
       }
       console.log(byUser);
-    });
+    }, {});
 
     for (x in commons) {
       diff += commons[x]['price'] % commons[x]['count'];
