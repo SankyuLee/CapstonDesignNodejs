@@ -76,7 +76,7 @@ router.get('/', function(req, res, next) {
       var ws = XLSX.utils.aoa_to_sheet(arr);
     	var wb = XLSX.utils.book_new();
     	XLSX.utils.book_append_sheet(wb, ws, filenamify(eventname));
-    	XLSX.writeFile(wb, filenamify(eventname)+'.xlsx');
+    	XLSX.writeFile(wb, 'event'+eventId+'.xlsx');
       res.send('respond with a resource');
     });
   });
