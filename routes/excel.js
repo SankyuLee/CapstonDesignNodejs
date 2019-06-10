@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
       var arr = [];
       var row_cnt = 1;
       for (e in byUser) {
-        arr.push(["닉네임", byUser[e]['nickname']);
+        arr.push(["닉네임", byUser[e]['nickname']]);
         row_cnt++;
         arr.push(["항목", "가격", "수량", "합계"]);
         row_cnt++;
