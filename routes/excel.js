@@ -67,7 +67,7 @@ router.get('/', function(req, res, next) {
             arr.push([byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, "=B"+row_cnt+"*C"+row_cnt]);
           row_cnt++;
         }
-        arr.push(["Total", "", "", "=SUM(D"+start_row+":D"+(row_cnt-1)+")"]);
+        arr.push(["Total", "", "", {t: 'n', f: "=SUM(D"+start_row+":D"+(row_cnt-1)+")"}]);
         row_cnt++;
         arr.push([""]);
         row_cnt++;
