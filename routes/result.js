@@ -12,11 +12,11 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
   connection.query("SELECT eventname from events where id=?;", [eventId], function(error, results, fields) {
-    if (!results)
+    if (results == [])
       res.send("<h1>Not Valid Event!!!!</h1>");
     var eventname = results[0].eventname;
     connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
-      if (!results)
+      if (results == [])
         res.send("<h1>Event Not On Result Phase!!!!</h1>");
       var result = results;
       var byUser = [];
