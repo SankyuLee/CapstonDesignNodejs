@@ -12,7 +12,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
   //var user_len = results.length;
-  connection.query("SELECT i.id, i.itemname, i.price, i.quantity, c.quantity, c.userId, u.nickname FROM events e, items i, checkLists c, bills b, users u WHERE e.id=? and e.id=b.eventId and b.id=i.billId and c.userId=u.id;", [eventId], function(error, results, fields) {
+  connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM events e, items i, checkLists c, bills b, users u WHERE e.id=? and e.id=b.eventId and b.id=i.billId and c.userId=u.id;", [eventId], function(error, results, fields) {
     res.json(results);
   });
 });
