@@ -1,5 +1,12 @@
-var express = require('express');
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'justpay',
+  password: 'justpay',
+  database: 'justpay'
+});
 var XLSX = require('xlsx');
+var express = require('express');
 var router = express.Router();
 
 /* GET excel file. */
