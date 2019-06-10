@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET excel file. */
 router.get('/', function(req, res, next) {
-  var ws = XLSX.utils.aoa_to_sheet([1, 2, 3, 4, 5]);
+  var ws = XLSX.utils.aoa_to_sheet([[1, 2, 3, 4, 5]]);
 	var wb = XLSX.utils.book_new();
 	XLSX.utils.book_append_sheet(wb, ws, "SheetJS");
 	XLSX.writeFile(wb, 'aa.xlsx');
