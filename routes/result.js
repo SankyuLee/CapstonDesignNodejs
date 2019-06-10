@@ -14,8 +14,10 @@ router.get('/', function(req, res, next) {
   connection.query("SELECT eventname from events where id=?;", [eventId], function(error, results, fields) {
     var eventname = results[0].eventname;
     connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
-      if (error)
+      if (error) {
         console.log(error);
+        res.send("<h1>Not valid event!!!</h1>");
+      }
       var result = results;
       var byUser = [];
       var commons = {};
