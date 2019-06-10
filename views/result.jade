@@ -26,6 +26,16 @@ body
   hr.outer
   each val1 in byUser
     h2= val1.nickname
+    .row
+      .col-4.item
+        h4 항목
+      .col-3.price
+        h4 가격
+      .col-2.quantity
+        h4 수량
+      .col-3.total
+        h4 합계
+    hr.inner
     each val2 in val1.items
       .row
         .col-4.item
