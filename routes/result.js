@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
   connection.query("SELECT eventname from events where id=?;", [eventId], function(error, results, fields) {
     var eventname = results[0].eventname;
-    connection.query("SELECT e.eventname, i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
+    connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
       if (error)
         console.log(error);
       var result = results;
