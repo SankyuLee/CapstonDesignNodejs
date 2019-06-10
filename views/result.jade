@@ -28,6 +28,7 @@ head
 body
   hr.outer
   each val1 in byUser
+    - var sum = 0;
     h2= val1.nickname
     .row
       .col-4.item
@@ -47,14 +48,22 @@ body
           h4= val2.price
         .col-2.quantity
           if val2.o_quantity == 0
-            h4 공통
+            h4= "1/"+commons[val2.itemId]['count']
           else
             h4= val2.quantity
         .col-3.total
           if val2.o_quantity == 0
-            h4= commons[val2.itemId]['price'] / commons[val2.itemId]['count']
+            h4= Math.floor(commons[val2.itemId]['price'] / commons[val2.itemId]['count'])
+            - sum += Math.floor(commons[val2.itemId]['price'] / commons[val2.itemId]['count']);
           else
             h4= val2.price*val2.quantity
+            - sum += val2.price*val2.quantity;
+      hr.inner
+      .row
+        .col-4.item
+          h4 총액
+        .col-8.total
+          h4= sum
     hr.outer
 
   // Optional JavaScript
