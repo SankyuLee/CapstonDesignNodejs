@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
         var start_row = row_cnt;
         for (i in e.items) {
           if (i.o_quantity == 0)
-            arr.push([i.itemname, i.price, "1/"+commons[i.itemId]['count'], Math.floor(commons[i.itemId]['price']/commons[i.itemId]['count']));
+            arr.push([i.itemname, i.price, "1/"+commons[i.itemId]['count'], Math.floor(commons[i.itemId]['price']/commons[i.itemId]['count'])]);
           else
             arr.push([i.itemname, i.price, i.quantity, "=B"+row_cnt+"*C"+row_cnt]);
           row_cnt++;
