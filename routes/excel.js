@@ -55,16 +55,16 @@ router.get('/', function(req, res, next) {
       var arr = [];
       var row_cnt = 1;
       for (e in byUser) {
-        arr.push(["닉네임", e.nickname]);
+        arr.push(["닉네임", byUser[e]['nickname']);
         row_cnt++;
         arr.push(["항목", "가격", "수량", "합계"]);
         row_cnt++;
         var start_row = row_cnt;
-        for (i in e.items) {
-          if (i.o_quantity == 0)
-            arr.push([i.itemname, i.price, "1/"+commons[i.itemId]['count'], Math.floor(commons[i.itemId]['price']/commons[i.itemId]['count'])]);
+        for (i in byUser[e]['items']) {
+          if (byUser[e]['items'][i].o_quantity == 0)
+            arr.push(byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, "1/"+commons[byUser[e]['items'][i]['itemId']]['count'], Math.floor(commons[byUser[e]['items'][i]['itemId']]['price']/commons[byUser[e]['items'][i]['itemId']]['count'])]);
           else
-            arr.push([i.itemname, i.price, i.quantity, "=B"+row_cnt+"*C"+row_cnt]);
+            arr.push(byUser[e]['items'][i].itemname, byUser[e]['items'][i].price, byUser[e]['items'][i].quantity, "=B"+row_cnt+"*C"+row_cnt]);
           row_cnt++;
         }
         arr.push(["Total", "", "", "=SUM(D"+start_row+":D"+(row_cnt-1)+")"]);
