@@ -21,6 +21,7 @@ router.get('/', function(req, res, next) {
     var diff = 0;
 
     result.forEach(function(e, i) {
+      console.log("1");
       if (!this[e.userId]) {
         this[e.userId] = {
           userId: e.userId,
@@ -40,16 +41,14 @@ router.get('/', function(req, res, next) {
           commons[e.id]['count']++;
         }
       }
-      if (i+1 == result.length) {
-        for (x in commons) {
-          diff += commons[x]['price'] % commons[x]['count'];
-        }
-        res.render("result", {byUser: byUser, commons: commons, diff: diff});
-      }
+      console.log(byUser);
     });
-    //console.log(byUser);
-    //console.log(commons);
-    //res.render("result", {byUser: byUser, commons: commons, diff: diff});
+
+    for (x in commons) {
+      diff += commons[x]['price'] % commons[x]['count'];
+    }
+
+    res.render("result", {byUser: byUser, commons: commons, diff: diff});
   });
 });
 
