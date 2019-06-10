@@ -12,6 +12,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
   connection.query("SELECT eventname from events where id=?;", [eventId], function(error, results, fields) {
+    console.log(results);
     if (results.length == 0)
       res.send("<h1>Not Valid Event!!!!</h1>");
     var eventname = results[0].eventname;
