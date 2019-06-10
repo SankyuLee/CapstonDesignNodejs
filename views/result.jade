@@ -52,7 +52,7 @@ body
             h4= val2.quantity
         .col-3.total
           if val2.o_quantity == 0
-            h4= commons[val2.id]['price'] / commons[val2.id]['count']
+            h4= commons[val2.itemId]['price'] / commons[val2.itemId]['count']
           else
             h4= val2.price*val2.quantity
     hr.outer
