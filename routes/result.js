@@ -41,7 +41,7 @@ router.get('/', function(req, res, next) {
     for (x in commons) {
       diff += commons[x]['price'] % commons[x]['count'];
     }
-    res.render("result");
+    res.render("result", {byUser: byUser, commons: commons, diff: diff});
   });
 });
 

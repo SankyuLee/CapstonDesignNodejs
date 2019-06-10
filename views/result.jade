@@ -16,41 +16,27 @@ head
     hr.inner {
       border: 1px solid #1100aa;
     }
-    .price {
+    .price, .quantity {
+      text-align: center;
+    }
+    .total {
       text-align: right;
     }
 body
   hr.outer
-  h2 HAHA
-  .row
-    .col-6.item
-      h4 ABC
-    .col-3.o_quantity
-      h4 x3
-    .col-3.price
-      h4 10,000
-  .row
-    .col-6.item
-      h4 ABC
-    .col-3.o_quantity
-      h4 x3
-    .col-3.price
-      h4 10,000
-  .row
-    .col-6.item
-      h4 ABC
-    .col-3.o_quantity
-      h4 x3
-    .col-3.price
-      h4 10,000
-  hr.inner
-  .row
-    .col-6.item
-      h4 TOTAL
-    .col-6.price
-      h4 30,000
-  hr.outer
-
+  each val1 in byUser
+    h2= val1.nickname
+    each val2 in val1.items
+      .row
+        .col-5.item
+          h4= val2.itemname
+        .col-3.price
+          h4= val2.price
+        .col-2.quantity
+          h4= val2.quantity
+        .col-3.total
+          h4= val2.price*val2.quantity
+    hr.outer
 
   // Optional JavaScript
   // jQuery first, then Popper.js, then Bootstrap JS
