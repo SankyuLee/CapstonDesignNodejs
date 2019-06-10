@@ -31,10 +31,11 @@ router.get('/', function(req, res, next) {
         this[e.userId]['items'].push({itemId: e.id, itemname: e.itemname, price: e.price, o_quantity: e.o_quantity, quantity: e.quantity});
       }
       if (e.o_quantity == 0) {
-        if (!commons[e.id])
-          commons[e.id] = {count: 1, price: e.price};
+        var id = parseInt(e.id);
+        if (!commons[id])
+          commons[id] = {count: 1, price: e.price};
         else {
-          commons[e.id]['count']++;
+          commons[id]['count']++;
         }
       }
     });
