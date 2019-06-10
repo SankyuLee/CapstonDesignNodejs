@@ -11,10 +11,11 @@ var router = express.Router();
 /* GET result of users by eventId. */
 router.get('/', function(req, res, next) {
   var eventId = req.query.eventId;
-  connection.query("SELECT i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
+  connection.query("SELECT e.eventname, i.id, i.itemname, i.price, i.quantity o_quantity, c.quantity, c.userId, u.nickname FROM bills b join items i on b.id=i.billId join checkLists c on i.id=c.itemId join users u on c.userId=u.id WHERE eventId=?;", [eventId], function(error, results, fields) {
     if (error)
       console.log(error);
     var result = results;
+    var eventname = result[0].eventname;
     var byUser = [];
     var commons = {};
     var diff = 0;
@@ -45,7 +46,7 @@ router.get('/', function(req, res, next) {
       diff += commons[x]['price'] % commons[x]['count'];
     }
 
-    res.render("result", {byUser: byUser, commons: commons, diff: diff});
+    res.render("result", {byUser: byUser, commons: commons, diff: diff, eventname: eventname});
   });
 });
 
